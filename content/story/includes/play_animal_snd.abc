@@ -1,0 +1,42 @@
+@play animal sound
+  *then
+    if animalType == 'cat' {
+      -> play cat sound
+    }
+    if animalType == 'dog' {
+      -> play dog sound
+    }
+    // >> RETURN
+
+@play cat sound
+  *say
+    [meow]
+  *then
+    >> RETURN
+
+@play dog sound
+  *say
+    [bark]
+  *then
+    >> RETURN
+
+@play animal attack sound
+  *then
+    if animalType == 'cat' {
+      -> play cat attack sound
+    }
+    if animalType == 'dog' {
+      -> play dog attack sound
+    }
+
+@play cat attack sound
+  *say
+    [attackmeow]
+  *then
+    >> RETURN
+
+@play dog attack sound
+  *say
+    [attackbark]
+  *then
+    >> RETURN

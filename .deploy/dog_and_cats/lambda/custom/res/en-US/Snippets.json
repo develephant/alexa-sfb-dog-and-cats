@@ -1,0 +1,52 @@
+{
+    "sfx": "<audio src='$SNIPPET_S3_RESOURCES_URI/audio/$1'/>",
+    "pic": "$SNIPPET_S3_RESOURCES_URI/images/$1",
+
+    "trumpet": "<audio src='https://s3.amazonaws.com/alexa-ml/sounds/sound-library-loud/Instruments/Trumpet_1.mp3' />",
+
+    "pause for": "<break time='$1'/>",
+    "pause": "<break time='1s'/>",
+    "shortPause": "<break time='0.5s'/>",
+    "snd": "<audio src='soundbank://soundlibrary/$1'/>",
+
+    "emstrong": "<emphasis level='strong'>",
+    "emmoderate": "<emphasis level='moderate'>",
+    "emsoft": "<emphasis level='reduced'>",
+    "/em": "</emphasis>",
+
+    "whisper": "<effect name='whispered'>",
+    "/whisper": "</effect>",
+
+    "emote": "<say-as interpret-as='interjection'>$1</say-as>.",
+
+    "vol": "<prosody volume='$1'>",
+    "/vol": "</prosody>",
+
+    "loud": "<prosody volume='loud'>",
+    "/loud": "</prosody>",
+
+    "xloud": "<prosody volume='x-loud'>",
+    "/xloud": "</prosody>",
+
+    "kid": "<voice name='Justin'>",
+    "/kid": "</voice>",
+
+    "gnome": "<voice name='Justin'><prosody volume='x-loud' rate='slow' pitch='x-high'>",
+    "/gnome": "</prosody></voice>",
+
+    "announcer": "<voice name='Amy'><lang xml:lang='en-GB'><prosody volume='x-loud'>",
+    "/announcer": "</prosody></lang></voice>",
+
+    "ruffian": "<voice name='Vicki'><lang xml:lang='de-DE'><prosody volume='x-loud' rate='medium' pitch='medium'>",
+    "/ruffian": "</prosody></lang></voice>",
+
+    "coins": "<audio src='soundbank://soundlibrary/cloth_leather_paper/money_coins/money_coins_04'/>",
+    "ding": "<audio src='soundbank://soundlibrary/magic_spells/magic_spells_14'/>",
+
+    "meow": "<audio src='soundbank://soundlibrary/animals/amzn_sfx_cat_meow_1x_01'/>",
+    "attackmeow": "<audio src='soundbank://soundlibrary/animals/amzn_sfx_cat_angry_screech_1x_01'/>",
+    "bark": "<audio src='soundbank://soundlibrary/animals/amzn_sfx_dog_small_bark_2x_01'/>",
+    "attackbark": "<audio src='soundbank://soundlibrary/animals/amzn_sfx_dog_med_bark_2x_02'/>",
+
+    "oceanwave": "<audio src='https://s3.amazonaws.com/alexa-ml/sounds/ezra-test-sounds/original/ocean_wave.mp3'/>"
+}

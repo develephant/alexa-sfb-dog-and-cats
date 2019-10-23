@@ -1,0 +1,25 @@
+@player heal
+  *then
+    if playerHasHealthPotion {
+      unflag playerHasHealthPotion
+      set playerHealAmount as varHealAmount
+      increase playerHp by playerHealAmount
+      -> say player heal
+    }
+    ->player has no health potion
+
+@say player heal
+  *say
+    You were healed for {playerHealAmount} health points.
+    You now have {playerHp} health points total.
+    You currently have no health potions.
+  *then
+    clear playerHealAmount
+
+    >> RETURN
+
+@player has no health potion
+  *say
+    You dont have any health potions with you at the moment.
+  *then
+    >> RETURN

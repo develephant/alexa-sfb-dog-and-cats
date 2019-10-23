@@ -1,0 +1,5 @@
+@say coin tally
+  *say
+    You have {playerCoins} coins.
+  *then
+    >> RETURN

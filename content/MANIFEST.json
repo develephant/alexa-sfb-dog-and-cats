@@ -1,0 +1,9 @@
+{
+    "include": [
+      "story/*.abc",
+      "story/scenes/*.abc",
+      "story/includes/*.abc",
+      "story/places/*.abc"
+    ],
+    "version": 1
+}

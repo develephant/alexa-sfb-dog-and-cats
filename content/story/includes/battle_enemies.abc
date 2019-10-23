@@ -1,0 +1,14 @@
+//Enemy vars
+@battle with ruffian
+  *then
+    set varBattleEnemyName as 'Ruffian'
+    set varBattleEnemyHp as 10
+    set varBattleEnemyHit as 1
+
+    >> RETURN
+
+@battle with vagrant
+  *then
+    set varBattleEnemyName as 'Vagrant'
+    set varBattleEnemyHp as 15
+    set varBattleEnemyHit as 2

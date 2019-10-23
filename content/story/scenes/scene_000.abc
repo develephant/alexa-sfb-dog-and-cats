@@ -1,0 +1,4 @@
+//Placeholder Intro scene
+@scene 000
+  *then
+    -> scene 010

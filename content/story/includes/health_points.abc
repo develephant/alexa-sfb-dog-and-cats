@@ -1,0 +1,5 @@
+@say player health points
+  *say
+    You have {playerHp} health points remaining.
+  *then
+    >> RETURN

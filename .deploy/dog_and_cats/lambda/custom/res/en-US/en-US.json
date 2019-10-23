@@ -1,0 +1,265 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "intents": [
+                {
+                    "name": "flexaIntent",
+                    "samples": [
+                        "dog",
+                        "doggy",
+                        "doggo",
+                        "woof",
+                        "a dog",
+                        "i want to be a dog"
+                    ]
+                },
+                {
+                    "name": "flexbIntent",
+                    "samples": [
+                        "cat",
+                        "kitty",
+                        "a cat",
+                        "meow",
+                        "i want to be a cat"
+                    ]
+                },
+                {
+                    "name": "flexcIntent",
+                    "samples": [
+                        "quit",
+                        "exit",
+                        "quit the game",
+                        "exit the game"
+                    ]
+                },
+                {
+                    "name": "flexdIntent",
+                    "samples": [
+                        "play again"
+                    ]
+                },
+                {
+                    "name": "flexeIntent",
+                    "samples": [
+                        "sparkles",
+                        "left",
+                        "go left",
+                        "left towards the sparkles",
+                        "towards the sparkles"
+                    ]
+                },
+                {
+                    "name": "flexfIntent",
+                    "samples": [
+                        "path",
+                        "go right",
+                        "right towards the path",
+                        "towards the path"
+                    ]
+                },
+                {
+                    "name": "flexgIntent",
+                    "samples": [
+                        "keep the play toy",
+                        "keep it",
+                        "keep",
+                        "keep the toy",
+                        "take the toy"
+                    ]
+                },
+                {
+                    "name": "flexhIntent",
+                    "samples": [
+                        "play with the toy",
+                        "play with it",
+                        "use the play toy"
+                    ]
+                },
+                {
+                    "name": "flexiIntent",
+                    "samples": [
+                        "walk",
+                        "keep walking",
+                        "walk away"
+                    ]
+                },
+                {
+                    "name": "flexjIntent",
+                    "samples": [
+                        "talk",
+                        "talk to the gnome",
+                        "the gnome"
+                    ]
+                },
+                {
+                    "name": "flexkIntent",
+                    "samples": [
+                        "return to the gnome",
+                        "gnome"
+                    ]
+                },
+                {
+                    "name": "flexlIntent",
+                    "samples": [
+                        "trade"
+                    ]
+                },
+                {
+                    "name": "flexmIntent",
+                    "samples": [
+                        "keep going forward",
+                        "i want to go forward"
+                    ]
+                },
+                {
+                    "name": "flexnIntent",
+                    "samples": [
+                        "hide",
+                        "quickly hide",
+                        "hide in the trees",
+                        "hide quickly",
+                        "i want to hide"
+                    ]
+                },
+                {
+                    "name": "flexoIntent",
+                    "samples": [
+                        "pay",
+                        "pay them",
+                        "pay the ruffians",
+                        "pay the coins",
+                        "give them my coins",
+                        "pony up"
+                    ]
+                },
+                {
+                    "name": "flexpIntent",
+                    "samples": [
+                        "fight",
+                        "battle",
+                        "fight them",
+                        "fight the ruffians",
+                        "attack",
+                        "for vahalla",
+                        "hit",
+                        "boom"
+                    ]
+                },
+                {
+                    "name": "flexqIntent",
+                    "samples": [
+                        "heal",
+                        "health",
+                        "medic",
+                        "i need healing",
+                        "heal me",
+                        "give me health"
+                    ]
+                },
+                {
+                    "name": "flexrIntent",
+                    "samples": [
+                        "check info",
+                        "check my info",
+                        "whats my info",
+                        "info"
+                    ]
+                },
+                {
+                    "name": "flexsIntent",
+                    "samples": [
+                        "investigate",
+                        "investigate the hole",
+                        "hole",
+                        "look in the hole",
+                        "go in the hole"
+                    ]
+                },
+                {
+                    "name": "flextIntent",
+                    "samples": [
+                        "make a wish",
+                        "wish"
+                    ]
+                },
+                {
+                    "name": "flexuIntent",
+                    "samples": [
+                        "no wish",
+                        "im done"
+                    ]
+                },
+                {
+                    "name": "AMAZON.CancelIntent"
+                },
+                {
+                    "name": "AMAZON.HelpIntent"
+                },
+                {
+                    "name": "AMAZON.LoopOffIntent"
+                },
+                {
+                    "name": "AMAZON.LoopOnIntent"
+                },
+                {
+                    "name": "AMAZON.NextIntent"
+                },
+                {
+                    "name": "AMAZON.NoIntent"
+                },
+                {
+                    "name": "AMAZON.PauseIntent"
+                },
+                {
+                    "name": "AMAZON.PreviousIntent"
+                },
+                {
+                    "name": "AMAZON.RepeatIntent"
+                },
+                {
+                    "name": "AMAZON.ResumeIntent"
+                },
+                {
+                    "name": "AMAZON.ShuffleOffIntent"
+                },
+                {
+                    "name": "AMAZON.ShuffleOnIntent"
+                },
+                {
+                    "name": "AMAZON.StartOverIntent"
+                },
+                {
+                    "name": "AMAZON.StopIntent"
+                },
+                {
+                    "name": "AMAZON.YesIntent"
+                },
+                {
+                    "name": "AMAZON.ScrollUpIntent"
+                },
+                {
+                    "name": "AMAZON.ScrollLeftIntent"
+                },
+                {
+                    "name": "AMAZON.ScrollDownIntent"
+                },
+                {
+                    "name": "AMAZON.ScrollRightIntent"
+                },
+                {
+                    "name": "AMAZON.PageUpIntent"
+                },
+                {
+                    "name": "AMAZON.PageDownIntent"
+                },
+                {
+                    "name": "AMAZON.MoreIntent"
+                },
+                {
+                    "name": "AMAZON.FallbackIntent"
+                }
+            ],
+            "invocationName": "dog and cats"
+        }
+    }
+}

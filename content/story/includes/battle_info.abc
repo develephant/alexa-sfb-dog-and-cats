@@ -1,0 +1,10 @@
+@say battle info
+  *say
+    You currently have {playerHp} health points.
+    Your attack is {playerHit}.
+    Enemy currently has {varBattleEnemyHp} health points.
+    enemy attack is {varBattleEnemyHit}.
+  *then
+    <-> get player inventory
+
+    >> RETURN

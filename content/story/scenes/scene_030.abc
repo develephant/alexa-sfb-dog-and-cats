@@ -1,0 +1,120 @@
+@scene 030
+  *say
+    [pause]
+    You move along enjoying the lush life, of Merry Falls.
+    Up ahead you hear some voices in the trees.
+    They don't sound very friendly.
+    Do you keep going forward, or quickly hide.
+  *reprompt
+    Do you want to continue, or should you hide.
+  *recap
+    Up ahead you hear some unfriendly voices in the trees.
+    Do you continue, or quickly hide.
+  *then
+    hear go forward, keep going forward, keep going, forward, move forward, i want to go forward {
+      -> keep going
+    }
+    hear hide, quickly hide, hide in the trees, hide quickly, i want to hide {
+      -> quickly hide
+    }
+    
+@keep going
+  *say
+    Hoping its just some local youth hanging about, you quietly move along.
+  *then
+    roll 2d6
+    if rollResult > 9 {
+      -> walk in peace
+    }
+    -> walk into ruffians
+
+@walk in peace
+  *say
+    You quickly shuffle ahead and keep your eyes on the road.
+    It sounds like some ruffians might be planning a robbery.
+    luckily they dont seem to notice you.
+  *then
+    -> scene 040
+
+@walk into ruffians
+  *say
+    [ruffian]Hey {animalType}![/ruffian] Someone says from the trees.
+    You abruptly stop in your tracks.
+    A ruffian stumbles up to you.
+    [ruffian]Give us all your coins. Be a good little {animalType}.[/ruffian]
+  *then
+    -> pay or fight the ruffians
+
+@pay or fight the ruffians
+  *say
+    Perhaps someone needs to teach these ruffians some manners.
+    Do you want to pay them all your coins, or fight.
+  *reprompt
+    Pay the ruffians all your coins, or fight.
+  *recap
+    You have been surrounded by ruffians.
+    You need to pay, or fight. 
+  *then
+    hear pay, pay them, pay the ruffians, pay the coins, give them my coins, pony up {
+      -> pay the ruffians
+    }
+    hear fight, battle, fight them, fight the ruffians, attack, for vahalla {
+      -> fight the ruffians
+    }
+
+@pay the ruffians
+  *say
+    You decide to pay the ruffians your {playerCoins} coins.
+    [ruffian]Nice doing business with you.[/ruffian]
+  *then
+    set playerCoins as 0
+    <-> say coin tally
+
+    -> scene 040
+
+@fight the ruffians
+  *say
+    You decide to stand your ground.
+    Its time to take action.
+  *then
+    // set varBattleEnemyName as 'Ruffian'
+    // set varBattleEnemyHp as 10
+    // set varBattleEnemyHit as 1
+    <-> battle with ruffian
+    <-> battle start
+
+    -> scene 040
+
+@quickly hide
+  *say
+    You quietly merge into the trees to your right.
+    The ruffians start stepping out from the darkness.
+    [ruffian]I thought I heard a {animalType} over there.[/ruffian]
+  *then
+    roll 2d6
+    if playerHasLuck {
+      roll 1d8
+    }
+
+    if rollResult > 6 {
+      -> quickly hide fail
+    }
+    -> quickly hide success
+
+@quickly hide fail
+  *say
+    [ruffian]I see a {animalType} over here. Get it![/ruffian]
+  *then
+    // set varBattleEnemyName as 'Ruffian'
+    // set varBattleEnemyHp as 10
+    // set varBattleEnemyHit as 1
+    <-> battle with ruffian
+    <-> battle start
+    -> scene 040
+
+@quickly hide success
+  *say
+    They start heading in your direction, but luckily pass you by.
+  *then
+    -> scene 040
+

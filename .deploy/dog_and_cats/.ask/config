@@ -1,0 +1,28 @@
+{
+  "deploy_settings": {
+    "default": {
+      "skill_id": "amzn1.ask.skill.29787be1-2611-49f4-a68d-428fc528c12a",
+      "was_cloned": false,
+      "merge": {},
+      "resources": {
+        "manifest": {
+          "eTag": "0b2a70e7baea94a67c577d80c1533ef2"
+        },
+        "lambda": [
+          {
+            "alexaUsage": [
+              "custom/default"
+            ],
+            "arn": "arn:aws:lambda:us-east-1:878547490203:function:ask-custom-dog_and_cats-default",
+            "awsRegion": "us-east-1",
+            "codeUri": "lambda/custom",
+            "functionName": "ask-custom-dog_and_cats-default",
+            "handler": "index.handler",
+            "revisionId": "764470cc-8629-4b0f-b1a4-658488381104",
+            "runtime": "nodejs10.x"
+          }
+        ]
+      }
+    }
+  }
+}

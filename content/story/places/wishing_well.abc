@@ -1,0 +1,97 @@
+// Wishing Well
+@visit the wishing well
+  *say
+    You notice a small hole in some nearby bushes.
+    Do you want to investigate the hole, or keep going.
+  *reprompt
+    Do you want to investigate the hole, or keep going.
+  *recap
+    You notice a small hole. Do you want to investigate, or keep going.
+  *then
+    hear investigate, investigate the hole, hole, look in the hole, go in the hole {
+      -> investigate the wishing well
+    }
+    hear keep going, forward, go forward, move forward {
+      -> scene 020
+    }
+
+@investigate the wishing well
+  *say
+    You crawl your way through the hole into a beautiful, round grassy opening.
+    In the middle sits a majestic wishing well.
+  *then
+    -> lets make a wish
+
+@lets make a wish
+  *say
+    Do you want to make a wish for one coin?
+    ||
+    Only one coin for one wish. How about it?
+    ||
+    You never know what you wish might be. Want to make one?
+    ||
+    Special things can happen at the wishing well. Do you want to throw a coin in?
+    ||
+    Toss a coin in. Its a wishing well. Are you ready?
+  *reprompt
+    Do you want to make a wish for one coin?
+  *recap
+    You are at the wishing well.
+    Do you want to make a wish for one coin?
+  *then
+    hear yes, yeah, sure, make a wish, wish {
+      -> make a wish at the wishing well
+    }
+    hear no, no wish, nope, no thanks, im done {
+      -> scene 020
+    }
+
+@make a wish at the wishing well
+  *then
+    if playerCoins > 0 {
+      <-> play wishing well coin sound
+      decrease playerCoins by 1
+      roll 2d6
+      if rollResult < 6 {
+        -> got lucky at the wishing well
+      }
+      -> got unlucky at the wishing well
+    }
+    -> not enough coins for the wishing well
+
+@not enough coins for the wishing well
+  *say
+    You dont have enough coins for the wishing well.
+    Time to move on.
+  *then
+    -> scene 020
+
+@play wishing well coin sound
+  *say
+    [coins]
+    [snd water/splash_water/splash_water_07]
+  *then
+    >> RETURN
+
+@got lucky at the wishing well
+  *say
+    Lady luck is on your side today.
+    Your luck trait has increased, giving you a chance for critical hits.
+  *then
+    flag playerHasLuck
+    -> lets make a wish
+
+@got unlucky at the wishing well
+  *say
+    Sorry. You were not so lucky at the well this time.
+    ||
+    Not so lucky. At least its just one coin.
+    ||
+    That is a shame. No luck at all.
+    ||
+    It could have been worse I suppose.
+    ||
+    Perhaps you should invest in a horse shoe.
+  *then
+    unflag playerHasLuck
+    -> lets make a wish

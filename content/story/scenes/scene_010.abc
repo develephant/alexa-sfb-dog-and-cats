@@ -1,0 +1,82 @@
+@scene 010
+  *say
+    [pause]
+    Its a {randomDayName}.
+    To the right you see a long winding path. To the left is something sparkling in the distance.
+    Do you want to go left towards the sparkles, or right down the path?
+  *reprompt
+    Do you want to go left towards the sparkles, or right down the path?
+  *recap
+    You see a path to your right, and sparkles to your left.
+    Which way do you want to go.
+  *then
+    hear sparkles, left, go left, left towards the sparkles, towards the sparkles {
+      roll 2d6
+      set foundCoins to rollResult
+      -> towards the sparkles
+    }
+    hear path, right, go right, right towards the path, towards the path {
+     -> towards the path
+    }
+
+@towards the sparkles
+  *say
+    You walk towards the sparkles and find {foundCoins} shiny coins.
+    [coins]
+  *then
+    increase playerCoins by foundCoins
+    <-> say coin tally
+    -> visit the wishing well
+
+@towards the path
+  *say
+    [xloud]You walk down the path towards the beach and see a lost play toy. Do you want to keep it, or play with it.[/xloud]
+  *reprompt
+    Would you like to keep it, or play with it.
+  *recap
+    You found some a play toy. Keep it, or play with it.
+  *then
+    //bgm https://s3.amazonaws.com/alexa-ml/sounds/ezra-test-sounds/original/ocean_wave.mp3
+    hear keep the play toy, keep it, keep, keep the toy, take the toy {
+      flag hasPlayToy
+      -> keep the play toy
+    }
+    hear play with the toy, play with it, play, use the play toy {
+      -> play with the play toy sound
+    }
+
+@keep the play toy
+  *say
+    You decide to keep the play toy, you might want to play with it later.
+    [ding]
+  *then
+    <-> get player inventory
+    -> visit the wishing well
+
+@play with the play toy sound
+  *then
+    <-> play animal sound
+    roll 2d6
+    if rollResult < 9 {
+      -> play and lose the play toy
+    }
+    -> play and keep the play toy
+
+@play and lose the play toy
+  *say
+    You're having a super fun time with the play toy, but then the wind sweeps it away. 
+    [snd nature/amzn_sfx_strong_wind_desert_01]
+    Bye bye, poor poor play toy.
+  *then
+    -> visit the wishing well
+
+@play and keep the play toy
+  *say
+    Oh what fun this play toy is. 
+    You decide to keep it.
+    It might come in handy later.
+    [ding]
+  *then
+    flag hasPlayToy
+    <-> get player inventory
+    -> scene 020

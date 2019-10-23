@@ -1,0 +1,119 @@
+//===========================================================================//
+// Story Main File
+//===========================================================================//
+@start
+  *say
+    Welcome to the world of dogs and cats. Would you like to be a dog, or a cat?
+  *then
+    <-> story init
+
+    hear dog, doggy, doggo, woof, a dog, i want to be a dog {
+      set animalType to 'dog'
+      -> confirm animal sound
+    }
+    hear cat, kitty, a cat, meow, i want to be a cat {
+      set animalType to 'cat'
+      -> confirm animal sound
+    }
+
+@confirm animal sound
+  *then
+    <-> play animal sound
+    -> confirm animal
+
+@confirm animal
+  *say
+    Good choice! A {animalType} is a great battler.
+    ||
+    Way to go! everyone loves a {animalType}!
+    ||
+    I would have picked the {animalType} too.
+  *then
+    -> scene 000
+
+// SPECIAL SCENE: "@global prepend" is a special scene and allows you to add content or instructions to the start of every scene set
+//@global prepend
+
+// SPECIAL SCENE: "@global append" is a special scene and allows you to add content or instructions to the end of every scene set
+@global append
+    *then
+        // hear inventory {
+        //   <-> get player inventory
+        // }
+        // listen everywhere for a few helpful phrases
+        hear start over, restart {
+            // Tell the framework to restart from the beginning
+            >> RESTART
+        }
+        hear repeat {
+            // Tell the framework to repeat everything the player just heard. You can use >> REPROMPT which only plays the reprompt content
+            >> REPEAT
+        }
+        //inventory
+        // hear inventory {
+        //   -> get player inventory
+        // }
+        hear help {
+            -> help
+        }
+        hear go back {
+            >> BACK
+        } 
+        // if the player hasn't heard the help message yet and says something the framework didn't catch, play the help message
+        if !helped {
+            hear * {
+                -> help
+            }
+        }
+
+// SPECIAL SCENE: @resume is a special scene that will play when the player comes back to the game after leaving
+// @inventory
+//   *say
+//     {varInventoryResult}
+//   *then
+//     clear varInventoryResult
+//     >> REPROMPT
+
+@resume
+	*say
+		Welcome back to your adventure. Would you like to pick up where you last left off?
+	*then
+		hear yes {
+            // Tell the framework to pick up where they last left off
+			>> RESUME
+		}
+		hear no {
+			>> RESTART
+		}
+
+// SPECIAL SCENE: @pause is a special scene that plays before the skill pauses
+@pause
+	*say
+		Thanks for playing. 
+	*then
+		>> PAUSE
+
+@end
+	*say
+		Thanks for playing. You can say start over to try again, or quit to exit the game.
+  *recap
+		Thanks for playing. You can say start over to try again, or quit to exit the game.  
+	*then
+		hear quit, exit, quit the game, exit the game {
+			>> END
+		}
+    hear start over, play again, restart {
+      >> RESTART
+    }
+
+@help
+    *say
+        Here's the help menu. Make choices to navigate the story or you can tell me to start over or stop. Picking up where you left off. 
+    *then
+        // flag that player has heard this
+        flag helped
+
+        // go back to last scene.
+        >> BACK
+
+

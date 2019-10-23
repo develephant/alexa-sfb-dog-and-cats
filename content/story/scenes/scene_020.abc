@@ -1,0 +1,91 @@
+@scene 020
+  *say
+    [pause]
+    You are on your way to the city of Chastin. 
+    You hope to get there before dark. 
+    You see a small gnome digging through the grass. 
+    Would you like to talk to the gnome, or keep walking?
+  *reprompt
+    Would you like to talk to the gnome, or keep walking?
+  *recap
+    You see a small gnome digging through the grass. 
+    Would you like to talk to the gnome, or keep walking?      
+  *then
+    set currentScene as '020'
+    hear walk, keep walking, walk away {
+      -> keep walking
+    }
+    hear talk, talk to the gnome, the gnome {
+      -> talk to the gnome
+    }
+
+@keep walking
+  *say
+    You carry on down the path. 
+    The gnome mumbles something and then produces a tiny golden key. 
+    Do you return and talk to the gnome or keep walking?
+  *reprompt
+    Do you return and talk to the gnome or keep walking?
+  *recap
+    The gnome mumbles something and then produces a tiny golden key. 
+    Do you return and talk to the gnome or keep walking?        
+  *then
+    hear return to the gnome, gnome, talk, talk to the gnome {
+      -> talk to the gnome
+    }
+    hear keep walking, walk, keep going {
+      -> continue walking
+    }
+
+@talk to the gnome
+  *say
+    [gnome]Aha[/gnome], the gnome says. [gnome]I have found this tiny golden key. But I have no need for it. Maybe I can trade it in Chastin.[/gnome]
+  *then
+    if hasPlayToy {
+      -> trade with gnome
+    }
+    -> nothing to trade
+
+@trade with gnome
+  *say
+    You remember that you have a play toy you found by the beach.
+    That tiny golden key looks pretty important.
+    Should you ask him to trade for it? Yes or no.
+  *reprompt
+    Should you ask him to trade for it? Yes or no.
+  *recap
+    The gnome has a tiny golden key that looks pretty important.
+    Should you ask him to trade for it? Yes or no.        
+  *then
+    hear yes, trade {
+      -> confirm trade with gnome
+    }
+    hear no {
+      -> continue walking
+    }
+
+@confirm trade with gnome
+  *say
+    You pull out the play toy you found and put it by the gnomes feet. He pauses, looks down, and then flashes a big grin. [gnome]Perfect. I have always wanted a play toy of my own![/gnome]
+    You recieve the tiny golden key!
+    [ding]
+  *then
+    unflag hasPlayToy
+    flag hasTinyGoldenKey
+    <-> get player inventory
+    -> continue walking
+
+@nothing to trade
+  *say
+    Digging through your inventory you realize that you have nothing to trade. Too bad.
+  *then
+    -> continue walking
+
+@continue walking
+  *say
+    Just up ahead in the distance you can see the flags of Chastin. 
+    [trumpet]
+    Soon you will be given your first mission.
+  *then
+    -> scene 030
+

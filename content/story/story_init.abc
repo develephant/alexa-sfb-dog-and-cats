@@ -1,0 +1,23 @@
+//===========================================================================//
+// Story Initialization
+//===========================================================================//
+@story init
+  *then
+    set playerHp as 20
+    set playerXp as 0
+    set playerHit as 2
+    set playerCoins as 5
+
+    unflag hasPlayToy
+    unflag hasHealthPotion
+    unflag hasTinyGoldenKey
+
+    //dev
+    flag playerHasCrit
+    flag playerHasLuck
+    // unflag playerHasLuck
+    // unflag playerHasCrit
+
+    pickRandomDay
+
+    >> RETURN

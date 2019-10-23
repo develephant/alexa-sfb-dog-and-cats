@@ -1,0 +1,6 @@
+@scene 040
+  *say
+    [pause]
+    Until next time.
+  *then
+    -> end

@@ -1,0 +1,201 @@
+@battle start
+  *say
+    Perpare for battle!
+  *then
+    // VARS
+    // set varBattleEnemyHp as 10
+    // set varBattleEnemyHit as 1
+    // set varBattleEnemyName as 'enemyName'
+    
+    flag playerIsTarget
+    
+    -> battle attack
+
+@battle attack
+  *then
+    unflag playerWasHit
+    unflag playerDidCrit
+    unflag playerDidDodge
+    unflag enemyWasHit
+
+    set entityHitFor as 0
+
+    if not playerIsTarget {
+      //enemy is target
+      flag playerIsTarget
+
+      //varBattleChoiceResult
+      if not varBattleChoiceResult {
+        <-> get battle choice
+      }
+
+      if varBattleChoiceResult is 'attack' {
+        flag enemyWasHit
+
+        set entityHitFor as playerHit
+
+        if playerHasCrit {
+          roll 2d6
+          if rollResult > 8 {
+            <-> player did crit
+            increase entityHitFor by 2
+          }
+        } 
+
+        decrease varBattleEnemyHp by entityHitFor
+      }
+      if varBattleChoiceResult is 'heal' {
+        <-> player heal
+      }
+      if varBattleChoiceResult is 'info' {
+        unflag playerIsTarget
+        <-> say battle info
+      }
+
+      clear varBattleChoiceResult
+
+      -> check battle status
+    }
+
+    if playerIsTarget {
+      //player is target
+      unflag playerIsTarget
+      flag playerWasHit
+
+      //random enemy hit range
+      roll 1d2
+      set entityHitFor as varBattleEnemyHit
+      increase entityHitFor by rollResult
+      
+      if playerHasLuck {
+        roll 2d6
+        if rollResult > 8 {
+          //dodge
+          <-> player did dodge
+          flag playerDidDodge
+          set entityHitFor to 0
+        }
+      }
+
+      decrease playerHp by entityHitFor
+
+      -> check battle status
+    }
+
+@get battle choice
+  *say
+    [announcer]Do you want to attack, heal, or check info.[/announcer]
+  *reprompt
+    [announcer]Attack, heal, or check info.[/announcer]
+  *recap
+    [announcer]You are in battle. Do you want to attack, heal, or check info.[/announcer]
+  *then
+    clear varBattleChoiceResult
+
+    hear attack, hit, boom {
+      set varBattleChoiceResult as 'attack'
+      >> RETURN
+    }
+    hear heal, health, medic, I need healing, heal me, give me health {
+      set varBattleChoiceResult as 'heal'
+      >> RETURN
+    }
+    hear check info, check my info, whats my info, info {
+      set varBattleChoiceResult as 'info'
+      >> RETURN
+    }
+
+@check battle status
+  *then
+    //Player Status
+    if playerWasHit {
+      if not playerDidDodge {
+        -> player was hit
+      }
+      //dodged
+      unflag playerIsTarget
+      set varBattleChoiceResult as 'attack'
+      -> battle attack
+    }
+
+    //Enemy Status
+    if enemyWasHit {
+      <-> play animal attack sound
+
+      if varBattleEnemyHp <= 0 {
+        -> enemy is dead
+      }
+
+      -> enemy was hit
+    }
+
+    -> battle attack
+
+@player was hit
+  *say
+    [announcer]The {varBattleEnemyName} attacks![/announcer]
+    [snd human/fight/fight_05]
+    You were hit for {entityHitFor}.
+  *then
+    if playerHp <= 0 {
+      -> player is dead
+    }
+    
+    <-> say player health points
+    -> battle attack
+
+@player did dodge
+  *say
+    [announcer]The {varBattleEnemyName} attacks![/announcer]
+    [snd foley/amzn_sfx_swoosh_cartoon_fast_01]
+    [announcer]You dodged the attack![/announcer]
+  *then
+    >> RETURN
+
+@player did crit
+  *say
+    [snd glass/crashes/crashes_02]
+    [announcer]Critial hit on the enemy![/announcer]
+    <say-as interpret-as='interjection'>bravo</say-as>
+  *then
+    >> RETURN
+
+@enemy was hit
+  *say
+    [announcer]{varBattleEnemyName} hit for {entityHitFor}.[/announcer]
+    [announcer]{varBattleEnemyName} has {varBattleEnemyHp} health points remaining.[/announcer]
+  *then
+    -> battle attack
+
+@player is dead
+  *say
+    You have been killed.
+    ||
+    You are dead friend.
+    ||
+    May you rest in piece.
+  *then
+    -> battle done
+
+@enemy is dead
+  *say
+    [announcer]The {varBattleEnemyName} was defeated.[/announcer]
+  *then
+    <-> say player health points
+    -> battle done
+
+@battle done
+  *say
+    The battle is over.
+    [trumpet]
+  *then
+    //clean up
+    unflag playerWasHit
+    unflag enemyWasHit
+    clear entityHit
+    clear entityHitFor
+    clear varBattleEnemyName
+    clear varBattleEnemyHit
+    clear varBattleEnemyHp
+
+    >> RETURN

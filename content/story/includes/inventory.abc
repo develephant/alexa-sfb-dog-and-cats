@@ -1,0 +1,54 @@
+//Inventory
+@get player inventory
+  *then
+    set playToy as ''
+    set goldenKey as ''
+    set healthPotion as ''
+
+    set varInventoryResult as 'Could not access your inventory.'
+
+    unflag hasInventoryItems
+
+    if hasPlayToy {
+      set playToy as 'Play Toy'
+      flag hasInventoryItems
+    }
+    if hasTinyGoldenKey {
+      set goldenKey as 'Tiny Golden Key'
+      flag hasInventoryItems
+    }
+    if hasHealthPotion {
+      set healthPotion as 'Health Potion'
+      flag hasInventoryItems
+    }
+
+    if hasInventoryItems {
+      unflag hasInventoryItems
+      -> player has inventory
+    }
+
+    -> player has no inventory
+
+@player has inventory
+  *say
+    You are currently carrying, {playToy}, {goldenKey}, {healthPotion}.
+  *then
+    //set varInventoryResult as "You are currently carrying, {playToy}, {goldenKey}, {healthPotion}." 
+
+    clear playToy
+    clear goldenKey
+    clear healthPotion
+
+    >> RETURN
+
+@player has no inventory
+  *say
+    You currently have nothing in your inventory.
+  *then
+    //set varInventoryResult as 'You currently have nothing in your inventory.'
+
+    clear playToy
+    clear goldenKey
+    clear healthPotion
+
+    >> RETURN
