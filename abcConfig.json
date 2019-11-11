@@ -35,7 +35,9 @@
 		"abc-baked-filename": "baked_story.json",
 		"abc-recording-script-filename": "vo_script.txt",
 
-		"public-resource-folders": ["audio", "images", "vo"],
+    "public-resource-folders": ["audio", "images", "vo"],
+    
+    "skipFFMPEGInclude": true,
 
 		"polly-config": {
 			"enabled": false,
